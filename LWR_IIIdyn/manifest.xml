@@ -1,0 +1,16 @@
+<package>
+  <description brief="LWR_III lib">
+
+     LWR_III lib
+
+  </description>
+  <author>Kai Krieger</author>
+  <license>Proprietary</license>
+  <review status="unreviewed" notes=""/>
+
+  <export>
+    <cpp cflags="-I${prefix}/include"
+         lflags="-L${prefix}/lib/sled11-x86-gcc4.x -lLWR_IIIdyn"/>
+  </export>
+
+</package>

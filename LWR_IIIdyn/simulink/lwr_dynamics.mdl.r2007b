@@ -1,0 +1,2142 @@
+Library {
+  Name			  "lwr_dynamics"
+  Version		  7.0
+  MdlSubVersion		  0
+  SavedCharacterEncoding  "UTF-8"
+  LibraryType		  "BlockLibrary"
+  SaveDefaultBlockParams  on
+  SampleTimeColors	  off
+  LibraryLinkDisplay	  "none"
+  WideLines		  off
+  ShowLineDimensions	  off
+  ShowPortDataTypes	  off
+  ShowLoopsOnError	  on
+  IgnoreBidirectionalLines off
+  ShowStorageClass	  off
+  ShowTestPointIcons	  on
+  ShowViewerIcons	  on
+  SortedOrder		  off
+  ExecutionContextIcon	  off
+  ShowLinearizationAnnotations on
+  ScopeRefreshTime	  0.035000
+  OverrideScopeRefreshTime on
+  DisableAllScopes	  off
+  BlockNameDataTip	  off
+  BlockParametersDataTip  off
+  BlockDescriptionStringDataTip	off
+  ToolBar		  on
+  StatusBar		  on
+  BrowserShowLibraryLinks off
+  BrowserLookUnderMasks	  off
+  Created		  "Mon Sep 26 17:30:24 2011"
+  Creator		  "krie_ka"
+  UpdateHistory		  "UpdateHistoryNever"
+  ModifiedByFormat	  "%<Auto>"
+  LastModifiedBy	  "krie_ka"
+  ModifiedDateFormat	  "%<Auto>"
+  LastModifiedDate	  "Tue Nov 13 16:42:27 2012"
+  RTWModifiedTimeStamp	  0
+  ModelVersionFormat	  "1.%<AutoIncrement:74>"
+  ConfigurationManager	  "None"
+  SimulationMode	  "normal"
+  LinearizationMsg	  "none"
+  Profile		  off
+  ParamWorkspaceSource	  "MATLABWorkspace"
+  CovSaveName		  "covdata"
+  CovMetricSettings	  "dw"
+  CovNameIncrementing	  off
+  CovHtmlReporting	  on
+  covSaveCumulativeToWorkspaceVar on
+  CovSaveSingleToWorkspaceVar on
+  CovCumulativeReport	  off
+  CovReportOnPause	  on
+  ExtModeBatchMode	  off
+  ExtModeEnableFloating	  on
+  ExtModeTrigType	  "manual"
+  ExtModeTrigMode	  "normal"
+  ExtModeTrigPort	  "1"
+  ExtModeTrigElement	  "any"
+  ExtModeTrigDuration	  1000
+  ExtModeTrigDurationFloating "auto"
+  ExtModeTrigHoldOff	  0
+  ExtModeTrigDelay	  0
+  ExtModeTrigDirection	  "rising"
+  ExtModeTrigLevel	  0
+  ExtModeArchiveMode	  "off"
+  ExtModeAutoIncOneShot	  off
+  ExtModeIncDirWhenArm	  off
+  ExtModeAddSuffixToVar	  off
+  ExtModeWriteAllDataToWs off
+  ExtModeArmWhenConnect	  on
+  ExtModeSkipDownloadWhenConnect off
+  ExtModeLogAll		  on
+  ExtModeAutoUpdateStatusClock off
+  ShowModelReferenceBlockVersion off
+  ShowModelReferenceBlockIO off
+  BlockDefaults {
+    Orientation		    "right"
+    ForegroundColor	    "black"
+    BackgroundColor	    "white"
+    DropShadow		    off
+    NamePlacement	    "normal"
+    FontName		    "Arial"
+    FontSize		    10
+    FontWeight		    "normal"
+    FontAngle		    "normal"
+    ShowName		    on
+  }
+  BlockParameterDefaults {
+    Block {
+      BlockType		      Demux
+      Outputs		      "4"
+      DisplayOption	      "none"
+      BusSelectionMode	      off
+    }
+    Block {
+      BlockType		      Gain
+      Gain		      "1"
+      Multiplication	      "Element-wise(K.*u)"
+      ParamMin		      "[]"
+      ParamMax		      "[]"
+      ParameterDataTypeMode   "Same as input"
+      ParameterDataType	      "fixdt(1,16,0)"
+      ParameterScalingMode    "Best Precision: Matrix-wise"
+      ParameterScaling	      "[]"
+      OutMin		      "[]"
+      OutMax		      "[]"
+      OutDataTypeMode	      "Same as input"
+      OutDataType	      "fixdt(1,16,0)"
+      OutScaling	      "[]"
+      LockScale		      off
+      RndMeth		      "Floor"
+      SaturateOnIntegerOverflow	on
+      SampleTime	      "-1"
+    }
+    Block {
+      BlockType		      Inport
+      Port		      "1"
+      UseBusObject	      off
+      BusObject		      "BusObject"
+      BusOutputAsStruct	      off
+      PortDimensions	      "-1"
+      SampleTime	      "-1"
+      OutMin		      "[]"
+      OutMax		      "[]"
+      DataType		      "auto"
+      OutDataType	      "fixdt(1,16,0)"
+      OutScaling	      "[]"
+      SignalType	      "auto"
+      SamplingMode	      "auto"
+      LatchByDelayingOutsideSignal off
+      LatchByCopyingInsideSignal off
+      Interpolate	      on
+    }
+    Block {
+      BlockType		      Integrator
+      ExternalReset	      "none"
+      InitialConditionSource  "internal"
+      InitialCondition	      "0"
+      LimitOutput	      off
+      UpperSaturationLimit    "inf"
+      LowerSaturationLimit    "-inf"
+      ShowSaturationPort      off
+      ShowStatePort	      off
+      AbsoluteTolerance	      "auto"
+      IgnoreLimit	      off
+      ZeroCross		      on
+      ContinuousStateAttributes	"''"
+    }
+    Block {
+      BlockType		      Outport
+      Port		      "1"
+      UseBusObject	      off
+      BusObject		      "BusObject"
+      BusOutputAsStruct	      off
+      PortDimensions	      "-1"
+      SampleTime	      "-1"
+      OutMin		      "[]"
+      OutMax		      "[]"
+      DataType		      "auto"
+      OutDataType	      "fixdt(1,16,0)"
+      OutScaling	      "[]"
+      SignalType	      "auto"
+      SamplingMode	      "auto"
+      OutputWhenDisabled      "held"
+      InitialOutput	      "[]"
+    }
+    Block {
+      BlockType		      Reference
+    }
+    Block {
+      BlockType		      "S-Function"
+      FunctionName	      "system"
+      SFunctionModules	      "''"
+      PortCounts	      "[]"
+    }
+    Block {
+      BlockType		      SubSystem
+      ShowPortLabels	      "FromPortIcon"
+      Permissions	      "ReadWrite"
+      PermitHierarchicalResolution "All"
+      TreatAsAtomicUnit	      off
+      SystemSampleTime	      "-1"
+      RTWFcnNameOpts	      "Auto"
+      RTWFileNameOpts	      "Auto"
+      RTWMemSecFuncInitTerm   "Inherit from model"
+      RTWMemSecFuncExecute    "Inherit from model"
+      RTWMemSecDataConstants  "Inherit from model"
+      RTWMemSecDataInternal   "Inherit from model"
+      RTWMemSecDataParameters "Inherit from model"
+      SimViewingDevice	      off
+      DataTypeOverride	      "UseLocalSettings"
+      MinMaxOverflowLogging   "UseLocalSettings"
+    }
+    Block {
+      BlockType		      Sum
+      IconShape		      "rectangular"
+      Inputs		      "++"
+      CollapseMode	      "All dimensions"
+      CollapseDim	      "1"
+      InputSameDT	      on
+      OutMin		      "[]"
+      OutMax		      "[]"
+      OutDataTypeMode	      "Same as first input"
+      OutDataType	      "fixdt(1,16,0)"
+      OutScaling	      "[]"
+      LockScale		      off
+      RndMeth		      "Floor"
+      SaturateOnIntegerOverflow	on
+      SampleTime	      "-1"
+    }
+    Block {
+      BlockType		      Terminator
+    }
+    Block {
+      BlockType		      Saturate
+      UpperLimit	      "0.5"
+      LowerLimit	      "-0.5"
+      LinearizeAsGain	      on
+      ZeroCross		      on
+      SampleTime	      "-1"
+      OutMin		      "[]"
+      OutMax		      "[]"
+      OutDataTypeMode	      "Same as input"
+      OutDataType	      "fixdt(1,16,0)"
+      OutScaling	      "[]"
+      LockScale		      off
+      RndMeth		      "Floor"
+    }
+  }
+  AnnotationDefaults {
+    HorizontalAlignment	    "center"
+    VerticalAlignment	    "middle"
+    ForegroundColor	    "black"
+    BackgroundColor	    "white"
+    DropShadow		    off
+    FontName		    "Arial"
+    FontSize		    10
+    FontWeight		    "normal"
+    FontAngle		    "normal"
+    UseDisplayTextAsClickCallback off
+  }
+  LineDefaults {
+    FontName		    "Arial"
+    FontSize		    9
+    FontWeight		    "normal"
+    FontAngle		    "normal"
+  }
+  System {
+    Name		    "lwr_dynamics"
+    Location		    [722, 158, 1363, 538]
+    Open		    on
+    ModelBrowserVisibility  off
+    ModelBrowserWidth	    200
+    ScreenColor		    "white"
+    PaperOrientation	    "landscape"
+    PaperPositionMode	    "auto"
+    PaperType		    "usletter"
+    PaperUnits		    "inches"
+    TiledPaperMargins	    [0.500000, 0.500000, 0.500000, 0.500000]
+    TiledPageScale	    1
+    ShowPageBoundaries	    off
+    ZoomFactor		    "100"
+    ReportName		    "simulink-default.rpt"
+    Block {
+      BlockType		      SubSystem
+      Name		      "Controller"
+      Ports		      []
+      Position		      [405, 44, 543, 213]
+      MinAlgLoopOccurrences   off
+      RTWSystemCode	      "Auto"
+      FunctionWithSeparateData off
+      MaskDisplay	      "plot([0.3 0.3 0.7 0.7 0.3], [0.6 0.8 0.8 0.6 0.6]);\ntext(0.35, 0.71, 'xd = f(x,u)');\n\n\nplot([0 0.2], [0.7 0.7]);\nplot([0.3 0.2 0.2 0.3], [0.7 0.77 0.63 0.7]);\ntext(0.1, 0.82, 'u');\nplot([0.7 0.9], [0.7 0.7]);\nplot([1 0.9 0.9 1], [0.7 0.77 0.63 0.7]);\ntext(0.85, 0.82, 'x');\n\nplot([0.3 0.3 0.7 0.7 0.3], [0.2 0.4 0.4 0.2 0.2]);\ntext(0.48, 0.32, 'K')\nplot([0.7 0.75 0.75 0.7], [0.3 0.27 0.33 0.3]);\nplot([0.75 0.8 0.8], [0.3 0.3 0.7])\nplot([0.3 0.1 0.1], [0.3 0.3 0.65])\nplot([0.1 0.07 0.13 0.1], [0.7 0.65 0.65 0.7]);\ntext(0.15, 0.6, '-');\n"
+      MaskIconFrame	      on
+      MaskIconOpaque	      on
+      MaskIconRotate	      "none"
+      MaskIconUnits	      "normalized"
+      System {
+	Name			"Controller"
+	Location		[639, 580, 1575, 887]
+	Open			off
+	ModelBrowserVisibility	off
+	ModelBrowserWidth	200
+	ScreenColor		"white"
+	PaperOrientation	"landscape"
+	PaperPositionMode	"auto"
+	PaperType		"usletter"
+	PaperUnits		"inches"
+	TiledPaperMargins	[0.500000, 0.500000, 0.500000, 0.500000]
+	TiledPageScale		1
+	ShowPageBoundaries	off
+	ZoomFactor		"100"
+	Block {
+	  BlockType		  SubSystem
+	  Name			  "Motor torque control"
+	  Ports			  [6, 1]
+	  Position		  [80, 27, 310, 248]
+	  MinAlgLoopOccurrences	  off
+	  RTWSystemCode		  "Auto"
+	  FunctionWithSeparateData off
+	  MaskPromptString	  "Stiffness of joints|Desired damping of Joints|Inertia of motorside|Desired Inertia of motorside"
+	  MaskStyleString	  "edit,edit,edit,edit"
+	  MaskTunableValueString  "on,on,on,on"
+	  MaskCallbackString	  "|||"
+	  MaskEnableString	  "on,on,on,on"
+	  MaskVisibilityString	  "on,on,on,on"
+	  MaskToolTipString	  "on,on,on,on"
+	  MaskVarAliasString	  ",,,"
+	  MaskVariables		  "KJoint=@1;DSJoint=@2;BJoint=@3;BThetaJoint=@4;"
+	  MaskDisplay		  "image(imread('lbrjoint.jpg'))\nport_label('input', 1, 'tau_des');\nport_label('input', 2, 'tau_a');\nport_label('input', 3, 'q');\nport_label('input', 4, 'dq/dt');\nport_label('input', 5, 'theta');\nport_label('input', 6, 'dtheta/dt');\nport_label('output', 1, 'tau_m');"
+	  MaskIconFrame		  on
+	  MaskIconOpaque	  on
+	  MaskIconRotate	  "none"
+	  MaskIconUnits		  "autoscale"
+	  MaskValueString	  "[6900 10854.7 10000 10000 6464.3 10000 10000]|20*ones(1,7)|[4.155 4.155 3.616 1.385 0.541 0.60083 0.60083]|[4.155 4.155 3.616 1.385 0.541 0.60083 0.60083]/5"
+	  MaskTabNameString	  ",,,"
+	  System {
+	    Name		    "Motor torque control"
+	    Location		    [262, 380, 824, 743]
+	    Open		    off
+	    ModelBrowserVisibility  off
+	    ModelBrowserWidth	    200
+	    ScreenColor		    "white"
+	    PaperOrientation	    "landscape"
+	    PaperPositionMode	    "auto"
+	    PaperType		    "usletter"
+	    PaperUnits		    "inches"
+	    TiledPaperMargins	    [0.500000, 0.500000, 0.500000, 0.500000]
+	    TiledPageScale	    1
+	    ShowPageBoundaries	    off
+	    ZoomFactor		    "100"
+	    Block {
+	      BlockType		      Inport
+	      Name		      "tau_d"
+	      Position		      [25, 53, 55, 67]
+	      BackgroundColor	      "red"
+	      IconDisplay	      "Port number"
+	      OutDataType	      "sfix(16)"
+	      OutScaling	      "2^0"
+	    }
+	    Block {
+	      BlockType		      Inport
+	      Name		      "tau_a"
+	      Position		      [205, 108, 235, 122]
+	      BackgroundColor	      "red"
+	      Port		      "2"
+	      IconDisplay	      "Port number"
+	      OutDataType	      "sfix(16)"
+	      OutScaling	      "2^0"
+	    }
+	    Block {
+	      BlockType		      Inport
+	      Name		      "q"
+	      Position		      [30, 308, 60, 322]
+	      BackgroundColor	      "red"
+	      Port		      "3"
+	      IconDisplay	      "Port number"
+	      OutDataType	      "sfix(16)"
+	      OutScaling	      "2^0"
+	    }
+	    Block {
+	      BlockType		      Inport
+	      Name		      "qd"
+	      Position		      [490, 303, 520, 317]
+	      Orientation	      "left"
+	      BackgroundColor	      "red"
+	      NamePlacement	      "alternate"
+	      Port		      "4"
+	      IconDisplay	      "Port number"
+	      OutDataType	      "sfix(16)"
+	      OutScaling	      "2^0"
+	    }
+	    Block {
+	      BlockType		      Inport
+	      Name		      "theta"
+	      Position		      [30, 268, 60, 282]
+	      BackgroundColor	      "red"
+	      Port		      "5"
+	      IconDisplay	      "Port number"
+	      OutDataType	      "sfix(16)"
+	      OutScaling	      "2^0"
+	    }
+	    Block {
+	      BlockType		      Inport
+	      Name		      "thetad"
+	      Position		      [490, 268, 520, 282]
+	      Orientation	      "left"
+	      BackgroundColor	      "red"
+	      NamePlacement	      "alternate"
+	      Port		      "6"
+	      IconDisplay	      "Port number"
+	      OutDataType	      "sfix(16)"
+	      OutScaling	      "2^0"
+	    }
+	    Block {
+	      BlockType		      Gain
+	      Name		      "Damping"
+	      Position		      [320, 252, 400, 298]
+	      Orientation	      "left"
+	      Gain		      "DSJoint"
+	      ParameterDataTypeMode   "Inherit via internal rule"
+	      ParameterDataType	      "sfix(16)"
+	      ParameterScaling	      "2^0"
+	      OutDataTypeMode	      "Inherit via internal rule"
+	      OutDataType	      "sfix(16)"
+	      OutScaling	      "2^0"
+	      SaturateOnIntegerOverflow	off
+	    }
+	    Block {
+	      BlockType		      Gain
+	      Name		      "Inertia"
+	      Position		      [90, 26, 250, 94]
+	      Gain		      "BJoint./BThetaJoint"
+	      ParameterDataTypeMode   "Inherit via internal rule"
+	      ParameterDataType	      "sfix(16)"
+	      ParameterScaling	      "2^0"
+	      OutDataTypeMode	      "Inherit via internal rule"
+	      OutDataType	      "sfix(16)"
+	      OutScaling	      "2^0"
+	      SaturateOnIntegerOverflow	off
+	    }
+	    Block {
+	      BlockType		      Gain
+	      Name		      "Inertia1"
+	      Position		      [177, 155, 383, 220]
+	      Orientation	      "up"
+	      Gain		      "BJoint./BThetaJoint"
+	      ParameterDataTypeMode   "Inherit via internal rule"
+	      ParameterDataType	      "sfix(16)"
+	      ParameterScaling	      "2^0"
+	      OutDataTypeMode	      "Inherit via internal rule"
+	      OutDataType	      "sfix(16)"
+	      OutScaling	      "2^0"
+	      SaturateOnIntegerOverflow	off
+	    }
+	    Block {
+	      BlockType		      Gain
+	      Name		      "Stiffness"
+	      Position		      [155, 252, 235, 298]
+	      Gain		      "KJoint"
+	      ParameterDataTypeMode   "Inherit via internal rule"
+	      ParameterDataType	      "sfix(16)"
+	      ParameterScaling	      "2^0"
+	      OutDataTypeMode	      "Inherit via internal rule"
+	      OutDataType	      "sfix(16)"
+	      OutScaling	      "2^0"
+	      SaturateOnIntegerOverflow	off
+	    }
+	    Block {
+	      BlockType		      Sum
+	      Name		      "Sum"
+	      Ports		      [3, 1]
+	      Position		      [270, 105, 290, 125]
+	      ShowName		      off
+	      IconShape		      "round"
+	      Inputs		      "++-"
+	      CollapseMode	      "All dimensions"
+	      InputSameDT	      off
+	      OutDataTypeMode	      "Inherit via internal rule"
+	      OutDataType	      "sfix(16)"
+	      OutScaling	      "2^0"
+	      SaturateOnIntegerOverflow	off
+	    }
+	    Block {
+	      BlockType		      Sum
+	      Name		      "Sum1"
+	      Ports		      [2, 1]
+	      Position		      [105, 265, 125, 285]
+	      ShowName		      off
+	      IconShape		      "round"
+	      Inputs		      "|+-"
+	      CollapseMode	      "All dimensions"
+	      InputSameDT	      off
+	      OutDataTypeMode	      "Inherit via internal rule"
+	      OutDataType	      "sfix(16)"
+	      OutScaling	      "2^0"
+	      SaturateOnIntegerOverflow	off
+	    }
+	    Block {
+	      BlockType		      Sum
+	      Name		      "Sum2"
+	      Ports		      [2, 1]
+	      Position		      [425, 265, 445, 285]
+	      Orientation	      "left"
+	      NamePlacement	      "alternate"
+	      ShowName		      off
+	      IconShape		      "round"
+	      Inputs		      "|+-"
+	      CollapseMode	      "All dimensions"
+	      InputSameDT	      off
+	      OutDataTypeMode	      "Inherit via internal rule"
+	      OutDataType	      "sfix(16)"
+	      OutScaling	      "2^0"
+	      SaturateOnIntegerOverflow	off
+	    }
+	    Block {
+	      BlockType		      Sum
+	      Name		      "Sum3"
+	      Ports		      [2, 1]
+	      Position		      [270, 265, 290, 285]
+	      Orientation	      "up"
+	      ShowName		      off
+	      IconShape		      "round"
+	      CollapseMode	      "All dimensions"
+	      InputSameDT	      off
+	      OutDataTypeMode	      "Inherit via internal rule"
+	      OutDataType	      "sfix(16)"
+	      OutScaling	      "2^0"
+	      SaturateOnIntegerOverflow	off
+	    }
+	    Block {
+	      BlockType		      Outport
+	      Name		      "tau_m"
+	      Position		      [330, 108, 360, 122]
+	      BackgroundColor	      "green"
+	      IconDisplay	      "Port number"
+	      OutDataType	      "sfix(16)"
+	      OutScaling	      "2^0"
+	    }
+	    Line {
+	      SrcBlock		      "tau_d"
+	      SrcPort		      1
+	      DstBlock		      "Inertia"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "Sum"
+	      SrcPort		      1
+	      DstBlock		      "tau_m"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "tau_a"
+	      SrcPort		      1
+	      DstBlock		      "Sum"
+	      DstPort		      2
+	    }
+	    Line {
+	      SrcBlock		      "Inertia"
+	      SrcPort		      1
+	      Points		      [25, 0]
+	      DstBlock		      "Sum"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "Inertia1"
+	      SrcPort		      1
+	      DstBlock		      "Sum"
+	      DstPort		      3
+	    }
+	    Line {
+	      SrcBlock		      "theta"
+	      SrcPort		      1
+	      DstBlock		      "Sum1"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "q"
+	      SrcPort		      1
+	      Points		      [50, 0]
+	      DstBlock		      "Sum1"
+	      DstPort		      2
+	    }
+	    Line {
+	      SrcBlock		      "thetad"
+	      SrcPort		      1
+	      DstBlock		      "Sum2"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "qd"
+	      SrcPort		      1
+	      Points		      [-50, 0]
+	      DstBlock		      "Sum2"
+	      DstPort		      2
+	    }
+	    Line {
+	      SrcBlock		      "Sum3"
+	      SrcPort		      1
+	      DstBlock		      "Inertia1"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "Sum1"
+	      SrcPort		      1
+	      DstBlock		      "Stiffness"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "Sum2"
+	      SrcPort		      1
+	      DstBlock		      "Damping"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "Stiffness"
+	      SrcPort		      1
+	      DstBlock		      "Sum3"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "Damping"
+	      SrcPort		      1
+	      DstBlock		      "Sum3"
+	      DstPort		      2
+	    }
+	  }
+	}
+      }
+    }
+    Block {
+      BlockType		      SubSystem
+      Name		      "Dynamics"
+      Ports		      []
+      Position		      [65, 44, 202, 211]
+      MinAlgLoopOccurrences   off
+      RTWSystemCode	      "Auto"
+      FunctionWithSeparateData off
+      MaskDisplay	      "plot([0.25 0.25 0.75 0.75 0.25], [0.25 0.75 0.75 0.25 0.25]);\ntext(0.35, 0.51, 'xd = f(x,u)');\n\nplot([0 0.15], [0.5 0.5]);\nplot([0.25 0.15 0.15 0.25], [0.5 0.57 0.43 0.5]);\ntext(0.1, 0.62, 'u');\nplot([0.75 0.9], [0.5 0.5]);\nplot([1 0.9 0.9 1], [0.5 0.57 0.43 0.5]);\ntext(0.85, 0.62, 'x');\n"
+      MaskIconFrame	      on
+      MaskIconOpaque	      on
+      MaskIconRotate	      "none"
+      MaskIconUnits	      "normalized"
+      System {
+	Name			"Dynamics"
+	Location		[222, 103, 1868, 1028]
+	Open			off
+	ModelBrowserVisibility	off
+	ModelBrowserWidth	200
+	ScreenColor		"white"
+	PaperOrientation	"landscape"
+	PaperPositionMode	"auto"
+	PaperType		"usletter"
+	PaperUnits		"inches"
+	TiledPaperMargins	[0.500000, 0.500000, 0.500000, 0.500000]
+	TiledPageScale		1
+	ShowPageBoundaries	off
+	ZoomFactor		"100"
+	Block {
+	  BlockType		  SubSystem
+	  Name			  "Additional Dynamic elements"
+	  Ports			  []
+	  Position		  [1240, 489, 1573, 653]
+	  MinAlgLoopOccurrences	  off
+	  RTWSystemCode		  "Auto"
+	  FunctionWithSeparateData off
+	  System {
+	    Name		    "Additional Dynamic elements"
+	    Location		    [651, 179, 1803, 785]
+	    Open		    off
+	    ModelBrowserVisibility  off
+	    ModelBrowserWidth	    200
+	    ScreenColor		    "white"
+	    PaperOrientation	    "landscape"
+	    PaperPositionMode	    "auto"
+	    PaperType		    "usletter"
+	    PaperUnits		    "inches"
+	    TiledPaperMargins	    [0.500000, 0.500000, 0.500000, 0.500000]
+	    TiledPageScale	    1
+	    ShowPageBoundaries	    off
+	    ZoomFactor		    "100"
+	    Block {
+	      BlockType		      SubSystem
+	      Name		      "calculate braking and endstop torques"
+	      Ports		      [7, 1]
+	      Position		      [40, 41, 305, 259]
+	      PermitHierarchicalResolution "ExplicitOnly"
+	      MinAlgLoopOccurrences   off
+	      RTWSystemCode	      "Auto"
+	      FunctionWithSeparateData off
+	      MaskType		      "Stateflow"
+	      MaskDescription	      "Embedded MATLAB block"
+	      MaskDisplay	      "disp('calcBrakesAndEndStops');"
+	      MaskSelfModifiable      on
+	      MaskIconFrame	      on
+	      MaskIconOpaque	      off
+	      MaskIconRotate	      "none"
+	      MaskIconUnits	      "autoscale"
+	      System {
+		Name			"calculate braking and endstop torques"
+		Location		[257, 457, 812, 717]
+		Open			off
+		ModelBrowserVisibility	off
+		ModelBrowserWidth	200
+		ScreenColor		"white"
+		PaperOrientation	"landscape"
+		PaperPositionMode	"auto"
+		PaperType		"usletter"
+		PaperUnits		"inches"
+		TiledPaperMargins	[0.500000, 0.500000, 0.500000, 0.500000]
+		TiledPageScale		1
+		ShowPageBoundaries	off
+		ZoomFactor		"100"
+		Block {
+		  BlockType		  Inport
+		  Name			  "q"
+		  Position		  [20, 101, 40, 119]
+		  IconDisplay		  "Port number"
+		}
+		Block {
+		  BlockType		  Inport
+		  Name			  "dqdt"
+		  Position		  [20, 136, 40, 154]
+		  Port			  "2"
+		  IconDisplay		  "Port number"
+		}
+		Block {
+		  BlockType		  Inport
+		  Name			  "brakes"
+		  Position		  [20, 171, 40, 189]
+		  Port			  "3"
+		  IconDisplay		  "Port number"
+		  OutDataType		  "sfix(16)"
+		  OutScaling		  "2^0"
+		}
+		Block {
+		  BlockType		  Inport
+		  Name			  "minJoint"
+		  Position		  [20, 206, 40, 224]
+		  Port			  "4"
+		  IconDisplay		  "Port number"
+		}
+		Block {
+		  BlockType		  Inport
+		  Name			  "maxJoint"
+		  Position		  [20, 246, 40, 264]
+		  Port			  "5"
+		  IconDisplay		  "Port number"
+		}
+		Block {
+		  BlockType		  Inport
+		  Name			  "tau"
+		  Position		  [20, 281, 40, 299]
+		  Port			  "6"
+		  IconDisplay		  "Port number"
+		}
+		Block {
+		  BlockType		  Inport
+		  Name			  "Minv"
+		  Position		  [20, 316, 40, 334]
+		  Port			  "7"
+		  IconDisplay		  "Port number"
+		}
+		Block {
+		  BlockType		  Demux
+		  Name			  " Demux "
+		  Ports			  [1, 1]
+		  Position		  [270, 355, 320, 395]
+		  Outputs		  "1"
+		}
+		Block {
+		  BlockType		  "S-Function"
+		  Name			  " SFunction "
+		  Tag			  "Stateflow S-Function lwr_dynamics 2"
+		  Ports			  [7, 2]
+		  Position		  [180, 134, 230, 356]
+		  FunctionName		  "sf_sfun"
+		  PortCounts		  "[7 2]"
+		  EnableBusSupport	  on
+		  Port {
+		    PortNumber		    2
+		    Name		    "tau_B"
+		    RTWStorageClass	    "Auto"
+		    DataLoggingNameMode	    "SignalName"
+		  }
+		}
+		Block {
+		  BlockType		  Terminator
+		  Name			  " Terminator "
+		  Position		  [460, 366, 480, 384]
+		}
+		Block {
+		  BlockType		  Outport
+		  Name			  "tau_B"
+		  Position		  [460, 101, 480, 119]
+		  IconDisplay		  "Port number"
+		  OutDataType		  "sfix(16)"
+		  OutScaling		  "2^0"
+		}
+		Line {
+		  SrcBlock		  "Minv"
+		  SrcPort		  1
+		  DstBlock		  " SFunction "
+		  DstPort		  7
+		}
+		Line {
+		  SrcBlock		  "tau"
+		  SrcPort		  1
+		  Points		  [120, 0]
+		  DstBlock		  " SFunction "
+		  DstPort		  6
+		}
+		Line {
+		  SrcBlock		  "maxJoint"
+		  SrcPort		  1
+		  Points		  [120, 0]
+		  DstBlock		  " SFunction "
+		  DstPort		  5
+		}
+		Line {
+		  SrcBlock		  "minJoint"
+		  SrcPort		  1
+		  Points		  [120, 0]
+		  DstBlock		  " SFunction "
+		  DstPort		  4
+		}
+		Line {
+		  SrcBlock		  "brakes"
+		  SrcPort		  1
+		  DstBlock		  " SFunction "
+		  DstPort		  3
+		}
+		Line {
+		  SrcBlock		  "dqdt"
+		  SrcPort		  1
+		  DstBlock		  " SFunction "
+		  DstPort		  2
+		}
+		Line {
+		  SrcBlock		  "q"
+		  SrcPort		  1
+		  DstBlock		  " SFunction "
+		  DstPort		  1
+		}
+		Line {
+		  Name			  "tau_B"
+		  Labels		  [0, 0]
+		  SrcBlock		  " SFunction "
+		  SrcPort		  2
+		  DstBlock		  "tau_B"
+		  DstPort		  1
+		}
+		Line {
+		  SrcBlock		  " Demux "
+		  SrcPort		  1
+		  DstBlock		  " Terminator "
+		  DstPort		  1
+		}
+		Line {
+		  SrcBlock		  " SFunction "
+		  SrcPort		  1
+		  Points		  [0, 185]
+		  DstBlock		  " Demux "
+		  DstPort		  1
+		}
+	      }
+	    }
+	    Annotation {
+	      Position		      [384, 58]
+	    }
+	    Annotation {
+	      Name		      "Calculates an addition torque \\tau_B for the endstops and the brakes so that the equation of motion is\nM(q)d^2q /dt^2+ C(q,dq/dt) + K(q,dq/dt,a_0, \\omega_0, d\\omega_0/dt) = G(q, g)+\\tau+\\tau_B\nwith\nOUTPUTS\n   tau_B: Breaking and end stop torque\nINPUTS\n   q: Joint angles\n   dqdt: Joint velocities\n   brakes: [7x1] vector with 1 brake on 0 brake off\n   minJoint: [7x1] vector of the lower joint limits\n   maxJoint [7x1] vector  of the higher joint limits\n   tau: torque calculated by C+K+G+\\tau\n   Minv: inverse Mass Matrix"
+	      Position		      [337, 182]
+	      HorizontalAlignment     "left"
+	      TeXMode		      "on"
+	      FontSize		      15
+	    }
+	  }
+	}
+	Block {
+	  BlockType		  SubSystem
+	  Name			  "Componentwise Dynamics"
+	  Ports			  []
+	  Position		  [35, 361, 272, 411]
+	  MinAlgLoopOccurrences	  off
+	  RTWSystemCode		  "Auto"
+	  FunctionWithSeparateData off
+	  System {
+	    Name		    "Componentwise Dynamics"
+	    Location		    [433, 403, 931, 870]
+	    Open		    off
+	    ModelBrowserVisibility  off
+	    ModelBrowserWidth	    200
+	    ScreenColor		    "white"
+	    PaperOrientation	    "landscape"
+	    PaperPositionMode	    "auto"
+	    PaperType		    "usletter"
+	    PaperUnits		    "inches"
+	    TiledPaperMargins	    [0.500000, 0.500000, 0.500000, 0.500000]
+	    TiledPageScale	    1
+	    ShowPageBoundaries	    off
+	    ZoomFactor		    "100"
+	    Block {
+	      BlockType		      "S-Function"
+	      Name		      "LWR Coriolistorques"
+	      Ports		      [5, 1]
+	      Position		      [270, 15, 455, 205]
+	      FunctionName	      "lbrDynCoriolis_sfun"
+	      MaskDisplay	      "image(imread('lbr.jpg'));\nport_label('input', 1, 'q');\nport_label('input', 2, 'qd');\nport_label('input', 3, 'm_EE');\nport_label('input', 4, 'r_EE');\nport_label('input', 5, 'I_EE');\n\n\nport_label('output', 1, 'tau_coriolis');\n"
+	      MaskIconFrame	      on
+	      MaskIconOpaque	      on
+	      MaskIconRotate	      "none"
+	      MaskIconUnits	      "autoscale"
+	    }
+	    Block {
+	      BlockType		      "S-Function"
+	      Name		      "LWR Gravitation"
+	      Ports		      [4, 1]
+	      Position		      [35, 242, 220, 433]
+	      FunctionName	      "lbrDynGravitation_sfun"
+	      MaskDisplay	      "image(imread('lbr.jpg'));\nport_label('input', 1, 'q');\nport_label('input', 2, 'm_EE');\nport_label('input', 3, 'r_EE');\nport_label('input', 4, 'g');\n\nport_label('output', 1, 'tau_gravity');\n"
+	      MaskIconFrame	      on
+	      MaskIconOpaque	      on
+	      MaskIconRotate	      "none"
+	      MaskIconUnits	      "autoscale"
+	    }
+	    Block {
+	      BlockType		      "S-Function"
+	      Name		      "LWR Massmatrix"
+	      Ports		      [4, 1]
+	      Position		      [275, 242, 460, 433]
+	      FunctionName	      "lbrDynMass_sfun"
+	      MaskDisplay	      "image(imread('lbr.jpg'));\nport_label('input', 1, 'q');\nport_label('input', 2, 'm_EE');\nport_label('input', 3, 'r_EE');\nport_label('input', 4, 'I_EE');\n\nport_label('output', 1, 'M');\n"
+	      MaskIconFrame	      on
+	      MaskIconOpaque	      on
+	      MaskIconRotate	      "none"
+	      MaskIconUnits	      "autoscale"
+	    }
+	    Block {
+	      BlockType		      "S-Function"
+	      Name		      "LWR Torques_floating"
+	      Ports		      [8, 1]
+	      Position		      [35, 17, 220, 208]
+	      FunctionName	      "lbrDynFloatingBase_sfun"
+	      MaskDisplay	      "image(imread('lbr.jpg'));\nport_label('input', 1, 'q');\nport_label('input', 2, 'qd');\nport_label('input', 3, 'm_EE');\nport_label('input', 4, 'r_EE');\nport_label('input', 5, 'I_EE');\nport_label('input', 6, 'a_0');\nport_label('input', 7, 'omega_0');\nport_label('input', 8, 'domega_0/dt');\n\nport_label('output', 1, 'tau_floating');\n\n"
+	      MaskIconFrame	      on
+	      MaskIconOpaque	      on
+	      MaskIconRotate	      "none"
+	      MaskIconUnits	      "autoscale"
+	    }
+	  }
+	}
+	Block {
+	  BlockType		  SubSystem
+	  Name			  "Joint Dynamic"
+	  Ports			  [3, 3]
+	  Position		  [1240, 22, 1580, 388]
+	  MinAlgLoopOccurrences	  off
+	  RTWSystemCode		  "Auto"
+	  FunctionWithSeparateData off
+	  MaskDisplay		  "image(imread('lbrjoint.jpg'))\nport_label('input', 1, 'q')\nport_label('input', 2, 'dq/dt')\nport_label('input', 3, 'tau_m')\nport_label('output', 1, 'tau_a')\nport_label('output', 2, 'theta')\nport_label('output', 3, 'dtheta/dt')\nport_label('output', 4, 'tau')\n\n"
+	  MaskIconFrame		  on
+	  MaskIconOpaque	  on
+	  MaskIconRotate	  "none"
+	  MaskIconUnits		  "autoscale"
+	  System {
+	    Name		    "Joint Dynamic"
+	    Location		    [58, 146, 769, 986]
+	    Open		    off
+	    ModelBrowserVisibility  off
+	    ModelBrowserWidth	    200
+	    ScreenColor		    "white"
+	    PaperOrientation	    "landscape"
+	    PaperPositionMode	    "auto"
+	    PaperType		    "usletter"
+	    PaperUnits		    "inches"
+	    TiledPaperMargins	    [0.500000, 0.500000, 0.500000, 0.500000]
+	    TiledPageScale	    1
+	    ShowPageBoundaries	    off
+	    ZoomFactor		    "100"
+	    Block {
+	      BlockType		      Inport
+	      Name		      "q"
+	      Position		      [505, 123, 535, 137]
+	      Orientation	      "left"
+	      BackgroundColor	      "red"
+	      IconDisplay	      "Port number"
+	      OutDataType	      "sfix(16)"
+	      OutScaling	      "2^0"
+	    }
+	    Block {
+	      BlockType		      Inport
+	      Name		      "qd"
+	      Position		      [505, 43, 535, 57]
+	      Orientation	      "left"
+	      BackgroundColor	      "red"
+	      Port		      "2"
+	      IconDisplay	      "Port number"
+	      OutDataType	      "sfix(16)"
+	      OutScaling	      "2^0"
+	    }
+	    Block {
+	      BlockType		      Inport
+	      Name		      "tau_m"
+	      Position		      [15, 263, 45, 277]
+	      BackgroundColor	      "red"
+	      Port		      "3"
+	      IconDisplay	      "Port number"
+	      OutDataType	      "sfix(16)"
+	      OutScaling	      "2^0"
+	    }
+	    Block {
+	      BlockType		      Gain
+	      Name		      "1/ Bjoint"
+	      Position		      [165, 254, 210, 286]
+	      Gain		      "1./[4.155 4.155 3.616 1.385 0.541 0.60083 0.60083]'"
+	      ParameterDataTypeMode   "Inherit via internal rule"
+	      ParameterDataType	      "sfix(16)"
+	      ParameterScaling	      "2^0"
+	      OutDataTypeMode	      "Inherit via internal rule"
+	      OutDataType	      "sfix(16)"
+	      OutScaling	      "2^0"
+	      SaturateOnIntegerOverflow	off
+	    }
+	    Block {
+	      BlockType		      Gain
+	      Name		      "DvisJoint"
+	      Position		      [240, 355, 275, 385]
+	      Orientation	      "left"
+	      Gain		      "[20 16.98 16.6 24 18 12 12]'"
+	      ParameterDataTypeMode   "Inherit via internal rule"
+	      ParameterDataType	      "sfix(16)"
+	      ParameterScaling	      "2^0"
+	      OutDataTypeMode	      "Inherit via internal rule"
+	      OutDataType	      "sfix(16)"
+	      OutScaling	      "2^0"
+	      SaturateOnIntegerOverflow	off
+	    }
+	    Block {
+	      BlockType		      Integrator
+	      Name		      "Integrator1"
+	      Ports		      [1, 1]
+	      Position		      [240, 255, 270, 285]
+	      InitialCondition	      "zeros(7,1)"
+	      Port {
+		PortNumber		1
+		Name			"thetaD"
+		RTWStorageClass		"Auto"
+		DataLoggingNameMode	"SignalName"
+	      }
+	    }
+	    Block {
+	      BlockType		      Integrator
+	      Name		      "Integrator2"
+	      Ports		      [1, 1]
+	      Position		      [365, 255, 395, 285]
+	      InitialCondition	      "zeros(7,1)"
+	      Port {
+		PortNumber		1
+		Name			"theta"
+		RTWStorageClass		"Auto"
+		DataLoggingNameMode	"SignalName"
+	      }
+	    }
+	    Block {
+	      BlockType		      Sum
+	      Name		      "Sum"
+	      Ports		      [2, 1]
+	      Position		      [430, 120, 450, 140]
+	      Orientation	      "left"
+	      ShowName		      off
+	      IconShape		      "round"
+	      Inputs		      "|-+"
+	      CollapseMode	      "All dimensions"
+	      InputSameDT	      off
+	      OutDataTypeMode	      "Inherit via internal rule"
+	      OutDataType	      "sfix(16)"
+	      OutScaling	      "2^0"
+	      SaturateOnIntegerOverflow	off
+	    }
+	    Block {
+	      BlockType		      Sum
+	      Name		      "Sum1"
+	      Ports		      [2, 1]
+	      Position		      [315, 40, 335, 60]
+	      Orientation	      "left"
+	      ShowName		      off
+	      IconShape		      "round"
+	      Inputs		      "|-+"
+	      CollapseMode	      "All dimensions"
+	      InputSameDT	      off
+	      OutDataTypeMode	      "Inherit via internal rule"
+	      OutDataType	      "sfix(16)"
+	      OutScaling	      "2^0"
+	      SaturateOnIntegerOverflow	off
+	    }
+	    Block {
+	      BlockType		      Sum
+	      Name		      "Sum2"
+	      Ports		      [3, 1]
+	      Position		      [80, 260, 100, 280]
+	      ShowName		      off
+	      IconShape		      "round"
+	      Inputs		      "-+-"
+	      CollapseMode	      "All dimensions"
+	      InputSameDT	      off
+	      OutDataTypeMode	      "Inherit via internal rule"
+	      OutDataType	      "sfix(16)"
+	      OutScaling	      "2^0"
+	      SaturateOnIntegerOverflow	off
+	    }
+	    Block {
+	      BlockType		      Sum
+	      Name		      "Sum3"
+	      Ports		      [2, 1]
+	      Position		      [80, 120, 100, 140]
+	      Orientation	      "down"
+	      ShowName		      off
+	      IconShape		      "round"
+	      Inputs		      "|++"
+	      CollapseMode	      "All dimensions"
+	      InputSameDT	      off
+	      OutDataTypeMode	      "Inherit via internal rule"
+	      OutDataType	      "sfix(16)"
+	      OutScaling	      "2^0"
+	      SaturateOnIntegerOverflow	off
+	    }
+	    Block {
+	      BlockType		      Gain
+	      Name		      "dJoiunt/kJoint"
+	      Position		      [145, 34, 185, 66]
+	      Orientation	      "left"
+	      Gain		      "zeros(7,1)"
+	      ParameterDataTypeMode   "Inherit via internal rule"
+	      ParameterDataType	      "sfix(16)"
+	      ParameterScaling	      "2^0"
+	      OutDataTypeMode	      "Inherit via internal rule"
+	      OutDataType	      "sfix(16)"
+	      OutScaling	      "2^0"
+	      SaturateOnIntegerOverflow	off
+	    }
+	    Block {
+	      BlockType		      Gain
+	      Name		      "kJoint"
+	      Position		      [245, 34, 295, 66]
+	      Orientation	      "left"
+	      Gain		      "[6900 10854.7 10000 10000 6464.3 10000 10000]'"
+	      ParameterDataTypeMode   "Inherit via internal rule"
+	      ParameterDataType	      "sfix(16)"
+	      ParameterScaling	      "2^0"
+	      OutDataTypeMode	      "Inherit via internal rule"
+	      OutDataType	      "sfix(16)"
+	      OutScaling	      "2^0"
+	      SaturateOnIntegerOverflow	off
+	    }
+	    Block {
+	      BlockType		      Gain
+	      Name		      "kJoint1"
+	      Position		      [230, 114, 280, 146]
+	      Orientation	      "left"
+	      Gain		      "[6900 10854.7 10000 10000 6464.3 10000 10000]'"
+	      ParameterDataTypeMode   "Inherit via internal rule"
+	      ParameterDataType	      "sfix(16)"
+	      ParameterScaling	      "2^0"
+	      OutDataTypeMode	      "Inherit via internal rule"
+	      OutDataType	      "sfix(16)"
+	      OutScaling	      "2^0"
+	      SaturateOnIntegerOverflow	off
+	    }
+	    Block {
+	      BlockType		      Saturate
+	      Name		      "tauMaxJoint"
+	      Position		      [75, 165, 105, 195]
+	      Orientation	      "down"
+	      UpperLimit	      "[180 180 80 80 30 30 30]'"
+	      LowerLimit	      "-[180 180 80 80 30 30 30]'"
+	      OutDataType	      "sfix(16)"
+	      OutScaling	      "2^0"
+	    }
+	    Block {
+	      BlockType		      Outport
+	      Name		      "tau_a"
+	      Position		      [140, 213, 170, 227]
+	      BackgroundColor	      "green"
+	      IconDisplay	      "Port number"
+	      OutDataType	      "sfix(16)"
+	      OutScaling	      "2^0"
+	    }
+	    Block {
+	      BlockType		      Outport
+	      Name		      "theta"
+	      Position		      [505, 263, 535, 277]
+	      BackgroundColor	      "green"
+	      Port		      "2"
+	      IconDisplay	      "Port number"
+	      OutDataType	      "sfix(16)"
+	      OutScaling	      "2^0"
+	    }
+	    Block {
+	      BlockType		      Outport
+	      Name		      "thetaD"
+	      Position		      [365, 363, 395, 377]
+	      BackgroundColor	      "green"
+	      Port		      "3"
+	      IconDisplay	      "Port number"
+	      OutDataType	      "sfix(16)"
+	      OutScaling	      "2^0"
+	    }
+	    Line {
+	      Name		      "thetaD"
+	      Labels		      [0, 0]
+	      SrcBlock		      "Integrator1"
+	      SrcPort		      1
+	      Points		      [50, 0]
+	      Branch {
+		DstBlock		"Sum1"
+		DstPort			2
+	      }
+	      Branch {
+		DstBlock		"Integrator2"
+		DstPort			1
+	      }
+	      Branch {
+		Points			[0, 100]
+		Branch {
+		  DstBlock		  "DvisJoint"
+		  DstPort		  1
+		}
+		Branch {
+		  DstBlock		  "thetaD"
+		  DstPort		  1
+		}
+	      }
+	    }
+	    Line {
+	      SrcBlock		      "q"
+	      SrcPort		      1
+	      DstBlock		      "Sum"
+	      DstPort		      1
+	    }
+	    Line {
+	      Name		      "theta"
+	      Labels		      [0, 0]
+	      SrcBlock		      "Integrator2"
+	      SrcPort		      1
+	      Points		      [40, 0]
+	      Branch {
+		DstBlock		"Sum"
+		DstPort			2
+	      }
+	      Branch {
+		DstBlock		"theta"
+		DstPort			1
+	      }
+	    }
+	    Line {
+	      SrcBlock		      "qd"
+	      SrcPort		      1
+	      DstBlock		      "Sum1"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "Sum2"
+	      SrcPort		      1
+	      DstBlock		      "1/ Bjoint"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "tau_m"
+	      SrcPort		      1
+	      DstBlock		      "Sum2"
+	      DstPort		      2
+	    }
+	    Line {
+	      SrcBlock		      "Sum"
+	      SrcPort		      1
+	      DstBlock		      "kJoint1"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "Sum1"
+	      SrcPort		      1
+	      DstBlock		      "kJoint"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "kJoint1"
+	      SrcPort		      1
+	      DstBlock		      "Sum3"
+	      DstPort		      2
+	    }
+	    Line {
+	      SrcBlock		      "dJoiunt/kJoint"
+	      SrcPort		      1
+	      Points		      [-50, 0]
+	      DstBlock		      "Sum3"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "DvisJoint"
+	      SrcPort		      1
+	      Points		      [-145, 0]
+	      DstBlock		      "Sum2"
+	      DstPort		      3
+	    }
+	    Line {
+	      SrcBlock		      "1/ Bjoint"
+	      SrcPort		      1
+	      DstBlock		      "Integrator1"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "Sum3"
+	      SrcPort		      1
+	      DstBlock		      "tauMaxJoint"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "tauMaxJoint"
+	      SrcPort		      1
+	      Points		      [0, 20]
+	      Branch {
+		DstBlock		"Sum2"
+		DstPort			1
+	      }
+	      Branch {
+		DstBlock		"tau_a"
+		DstPort			1
+	      }
+	    }
+	    Line {
+	      SrcBlock		      "kJoint"
+	      SrcPort		      1
+	      DstBlock		      "dJoiunt/kJoint"
+	      DstPort		      1
+	    }
+	    Annotation {
+	      Position		      [535, 67]
+	    }
+	    Annotation {
+	      Position		      [599, 86]
+	    }
+	    Annotation {
+	      Position		      [628, 58]
+	    }
+	    Annotation {
+	      Name		      "Calculates the elastic joints from \nBJoint*d^2theta/dt^2 +KJoint(theta-q)+DJoint/KJoint*(dtheta/dt-dq/dt)+DvisJoint*dtheta/dt = tau_m\n\nSTANDARD PARAMETERS\nKJoint = [6900 10854.7 10000 10000 6464.3 10000 10000]\nBJoint = [4.155 4.155 3.616 1.385 0.541 0.60083 0.60083]\nDvisJoint = [20 16.98 16.6 24 18 12 12]\nDJoint = [0 0 0 0 0 0 0]\nTauMaxJoint = [180 180 80 80 30 30 30]\n\nINPUTS\n   q joint angles\n   dq/dt joint velocities\n   tau_m motor torque\n   \nOUTPUTS\n   tau_a to the robot applied torque\n   theta motor position\n   dtheta/dt motor velocity"
+	      Position		      [42, 611]
+	      HorizontalAlignment     "left"
+	      FontSize		      15
+	    }
+	  }
+	}
+	Block {
+	  BlockType		  "S-Function"
+	  Name			  "LWR-Dynamics"
+	  Ports			  [9, 4]
+	  Position		  [425, 403, 480, 457]
+	  BackgroundColor	  "black"
+	  FunctionName		  "lbrDynTcpFloating_sfun"
+	  MaskDisplay		  "image(imread('lbr.jpg'));\nport_label('input', 1, 'q');\nport_label('input', 2, 'dq/dt');\nport_label('input', 3, 'm_EE');\nport_label('input', 4, 'rC_EE');\nport_label('input', 5, 'I_EE');\nport_label('input', 6, 'g');\nport_label('input', 7, 'a_0');\nport_label('input', 8, 'omega_0');\nport_label('input', 9, 'domega_0/dt');\n\nport_label('output', 1, 'G');\nport_label('output', 2, 'C');\nport_label('output', 3, 'K');\nport_label('output', 4, 'M');"
+	  MaskIconFrame		  on
+	  MaskIconOpaque	  on
+	  MaskIconRotate	  "none"
+	  MaskIconUnits		  "autoscale"
+	}
+	Block {
+	  BlockType		  Reference
+	  Name			  "LWR-Dynamics floating base"
+	  Ports			  [9, 4]
+	  Position		  [25, 26, 270, 334]
+	  BackgroundColor	  "black"
+	  SourceBlock		  "lwr_dynamics/Dynamics/LWR-Dynamics"
+	  SourceType		  "Unknown"
+	}
+	Block {
+	  BlockType		  "S-Function"
+	  Name			  "LWR-Dynamics static base"
+	  Ports			  [6, 3]
+	  Position		  [325, 26, 570, 334]
+	  BackgroundColor	  "black"
+	  FunctionName		  "lbrDynamicStaticBase_sfun"
+	  MaskDisplay		  "image(imread('lbr.jpg'));\nport_label('input', 1, 'q');\nport_label('input', 2, 'dq/dt');\nport_label('input', 3, 'm_EE');\nport_label('input', 4, 'rC_EE');\nport_label('input', 5, 'I_EE');\nport_label('input', 6, 'g');\n\n\nport_label('output', 1, 'G');\nport_label('output', 2, 'C');\nport_label('output', 3, 'M');"
+	  MaskIconFrame		  on
+	  MaskIconOpaque	  on
+	  MaskIconRotate	  "none"
+	  MaskIconUnits		  "autoscale"
+	}
+	Block {
+	  BlockType		  "S-Function"
+	  Name			  "LWR-Reactions"
+	  Ports			  [10, 2]
+	  Position		  [30, 495, 275, 805]
+	  FunctionName		  "lbrDynReaction_sfun"
+	  MaskDisplay		  "image(imread('lbr.jpg'));\nport_label('input', 1, 'q');\nport_label('input', 2, 'dq/dt');\nport_label('input', 3, 'd^2q/dt^2');\nport_label('input', 4, 'm_EE');\nport_label('input', 5, 'rC_EE');\nport_label('input', 6, 'I_EE');\nport_label('input', 7, 'g');\nport_label('input', 8, 'a_0');\nport_label('input', 9, 'omega_0');\nport_label('input', 10, 'domega_0/dt');\n\nport_label('output', 1, 'F');\nport_label('output', 2, 'M');\n"
+	  MaskIconFrame		  on
+	  MaskIconOpaque	  on
+	  MaskIconRotate	  "none"
+	  MaskIconUnits		  "autoscale"
+	}
+	Annotation {
+	  Name			  "NOCH ZU TUN\nBASISELEMENT GENAU"
+	  Position		  [133, 860]
+	}
+	Annotation {
+	  Name			  "Calculates the Elements of the equation of Motion\nM(q)d^2q /dt^2 = C(q,dq/dt) + K(q,dq/dt,a_0, \\omega_0, d\\omega_0/dt) + G(q, g)+\\tau\nwith\nOUTPUTS\n   M: Mass Matrix\n   C: Coriolis Matrix\n   K: Coriolis Matrix of floating base\n   G: gravitational forces\nINPUTS\n   q: Joint angles\n   dq/dt: Joint velocities\n   m_EE: mass of additional end effector\n   rC_EE: position of center of mass of the end effector in TCP coordinates\n   I_EE:  principal moment of Inertia of the end effector in TCP coordinates\n   g: gravitation vector in 0-coordinates\n   a_0: additional translational acceleration of base in 0-coordinates\n   omega_0: additional rotational velocity of base in 0-coordinates\n   domega_0/dt additional rotational acceleration of base in 0-coordnates"
+	  Position		  [652, 212]
+	  HorizontalAlignment	  "left"
+	  TeXMode		  "on"
+	  FontSize		  15
+	}
+	Annotation {
+	  Name			  "Calculates the Reaction Forces in the base from the equation\nEQUATION\nwith\nOUTPUTS\n    F reaction force in base in 0-coordinates\n    M momentum in base in 0-coordinates\nINPUTS\n   cf. LWR-Dynamics\n   d^2q/dt: Joint accelerations from LWR-Dynamics"
+	  Position		  [362, 692]
+	  HorizontalAlignment	  "left"
+	  TeXMode		  "on"
+	  FontSize		  15
+	}
+	Annotation {
+	  Name			  "This is deprecated"
+	  Position		  [541, 420]
+	}
+      }
+    }
+    Block {
+      BlockType		      SubSystem
+      Name		      "Kinematics"
+      Ports		      []
+      Position		      [235, 44, 373, 213]
+      MinAlgLoopOccurrences   off
+      RTWSystemCode	      "Auto"
+      FunctionWithSeparateData off
+      MaskDisplay	      "plot(-0.15,-0.15);\nplot(1.35,1.35);\nplot([0 0.8 0.8 0.8 1 0.8],[0 0 0.1 -0.1 0 0.1]);\nplot([0 0 0.1 -0.1 0 0.1],[0 0.8 0.8 0.8 1 0.8]);\ntext(1.15,0.05,'X');\ntext(0.02,1.15,'Z');\ntext(0.9,0.5,'Y');\nplot([0, 0.6582, 0.7057, 0.6107, 0.8227, 0.7057],[0, 0.38, 0.2977, 0.4623, 0.475, 0.2977]);"
+      MaskIconFrame	      on
+      MaskIconOpaque	      on
+      MaskIconRotate	      "none"
+      MaskIconUnits	      "autoscale"
+      System {
+	Name			"Kinematics"
+	Location		[-48, 53, 1315, 825]
+	Open			on
+	ModelBrowserVisibility	off
+	ModelBrowserWidth	200
+	ScreenColor		"white"
+	PaperOrientation	"landscape"
+	PaperPositionMode	"auto"
+	PaperType		"usletter"
+	PaperUnits		"inches"
+	TiledPaperMargins	[0.500000, 0.500000, 0.500000, 0.500000]
+	TiledPageScale		1
+	ShowPageBoundaries	off
+	ZoomFactor		"100"
+	Block {
+	  BlockType		  SubSystem
+	  Name			  "Forces on ELements"
+	  Ports			  [3, 1]
+	  Position		  [675, 482, 870, 588]
+	  PermitHierarchicalResolution "ExplicitOnly"
+	  MinAlgLoopOccurrences	  off
+	  RTWSystemCode		  "Auto"
+	  FunctionWithSeparateData off
+	  MaskType		  "Stateflow"
+	  MaskDescription	  "Embedded MATLAB block"
+	  MaskDisplay		  "disp('calcTorque');"
+	  MaskSelfModifiable	  on
+	  MaskIconFrame		  on
+	  MaskIconOpaque	  off
+	  MaskIconRotate	  "none"
+	  MaskIconUnits		  "autoscale"
+	  System {
+	    Name		    "Forces on ELements"
+	    Location		    [257, 457, 812, 717]
+	    Open		    off
+	    ModelBrowserVisibility  off
+	    ModelBrowserWidth	    200
+	    ScreenColor		    "white"
+	    PaperOrientation	    "landscape"
+	    PaperPositionMode	    "auto"
+	    PaperType		    "usletter"
+	    PaperUnits		    "inches"
+	    TiledPaperMargins	    [0.500000, 0.500000, 0.500000, 0.500000]
+	    TiledPageScale	    1
+	    ShowPageBoundaries	    off
+	    ZoomFactor		    "100"
+	    Block {
+	      BlockType		      Inport
+	      Name		      "i_r_x"
+	      Position		      [20, 101, 40, 119]
+	      IconDisplay	      "Port number"
+	      OutDataType	      "sfix(16)"
+	      OutScaling	      "2^0"
+	    }
+	    Block {
+	      BlockType		      Inport
+	      Name		      "F_x"
+	      Position		      [20, 136, 40, 154]
+	      Port		      "2"
+	      IconDisplay	      "Port number"
+	    }
+	    Block {
+	      BlockType		      Inport
+	      Name		      "i_J_i"
+	      Position		      [20, 171, 40, 189]
+	      Port		      "3"
+	      IconDisplay	      "Port number"
+	    }
+	    Block {
+	      BlockType		      Demux
+	      Name		      " Demux "
+	      Ports		      [1, 1]
+	      Position		      [270, 180, 320, 220]
+	      Outputs		      "1"
+	    }
+	    Block {
+	      BlockType		      "S-Function"
+	      Name		      " SFunction "
+	      Tag		      "Stateflow S-Function lwr_dynamics 1"
+	      Ports		      [3, 2]
+	      Position		      [180, 100, 230, 180]
+	      FunctionName	      "sf_sfun"
+	      PortCounts	      "[3 2]"
+	      EnableBusSupport	      on
+	      Port {
+		PortNumber		2
+		Name			"tau"
+		RTWStorageClass		"Auto"
+		DataLoggingNameMode	"SignalName"
+	      }
+	    }
+	    Block {
+	      BlockType		      Terminator
+	      Name		      " Terminator "
+	      Position		      [460, 191, 480, 209]
+	    }
+	    Block {
+	      BlockType		      Outport
+	      Name		      "tau"
+	      Position		      [460, 101, 480, 119]
+	      IconDisplay	      "Port number"
+	      OutDataType	      "sfix(16)"
+	      OutScaling	      "2^0"
+	    }
+	    Line {
+	      SrcBlock		      "i_J_i"
+	      SrcPort		      1
+	      DstBlock		      " SFunction "
+	      DstPort		      3
+	    }
+	    Line {
+	      SrcBlock		      "F_x"
+	      SrcPort		      1
+	      Points		      [120, 0]
+	      DstBlock		      " SFunction "
+	      DstPort		      2
+	    }
+	    Line {
+	      Name		      "tau"
+	      Labels		      [0, 0]
+	      SrcBlock		      " SFunction "
+	      SrcPort		      2
+	      DstBlock		      "tau"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "i_r_x"
+	      SrcPort		      1
+	      DstBlock		      " SFunction "
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      " Demux "
+	      SrcPort		      1
+	      DstBlock		      " Terminator "
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      " SFunction "
+	      SrcPort		      1
+	      Points		      [0, 80]
+	      DstBlock		      " Demux "
+	      DstPort		      1
+	    }
+	  }
+	}
+	Block {
+	  BlockType		  "S-Function"
+	  Name			  "LWR 0_T_EE"
+	  Ports			  [2, 1]
+	  Position		  [665, 30, 775, 130]
+	  FunctionName		  "lbrTransformation_EE_sfun"
+	  MaskDisplay		  "image(imread('lbr.jpg'));\nport_label('input', 1, 'q');\nport_label('input', 2, '7_T_EE');\n\n\nport_label('output', 1, '0_T_EE');\n\n"
+	  MaskIconFrame		  on
+	  MaskIconOpaque	  on
+	  MaskIconRotate	  "none"
+	  MaskIconUnits		  "autoscale"
+	}
+	Block {
+	  BlockType		  "S-Function"
+	  Name			  "LWR Body Jacobians"
+	  Ports			  [1, 7]
+	  Position		  [1120, 245, 1305, 435]
+	  FunctionName		  "lbrBodyJacobians_sfun"
+	  MaskDisplay		  "image(imread('lbr.jpg'));\nport_label('input', 1, 'q');\n\n\n\nport_label('output', 1, '1_J^T_1');\nport_label('output', 2, '2_J^T_2');\nport_label('output', 3, '3_J^T_3');\nport_label('output', 4, '4_J^T_4');\nport_label('output', 5, '5_J^T_5');\nport_label('output', 6, '6_J^T_6');\nport_label('output', 7, '7_J^T_7');\n"
+	  MaskIconFrame		  on
+	  MaskIconOpaque	  on
+	  MaskIconRotate	  "none"
+	  MaskIconUnits		  "autoscale"
+	}
+	Block {
+	  BlockType		  "S-Function"
+	  Name			  "LWR Body Jacobians with EE"
+	  Ports			  [2, 8]
+	  Position		  [900, 242, 1085, 433]
+	  FunctionName		  "lbrBodyJacobiansWithEE_sfun"
+	  MaskDisplay		  "image(imread('lbr.jpg'));\nport_label('input', 1, 'q');\nport_label('input', 2, '7_T_EE');\n\n\nport_label('output', 1, '1_J^T_1');\nport_label('output', 2, '2_J^T_2');\nport_label('output', 3, '3_J^T_3');\nport_label('output', 4, '4_J^T_4');\nport_label('output', 5, '5_J^T_5');\nport_label('output', 6, '6_J^T_6');\nport_label('output', 7, '7_J^T_7');\nport_label('output', 8, 'EE_J^T_EE');\n"
+	  MaskIconFrame		  on
+	  MaskIconOpaque	  on
+	  MaskIconRotate	  "none"
+	  MaskIconUnits		  "autoscale"
+	}
+	Block {
+	  BlockType		  "S-Function"
+	  Name			  "LWR Jacobian EE"
+	  Ports			  [2, 1]
+	  Position		  [800, 35, 910, 135]
+	  FunctionName		  "lbrJacobian_EE_sfun"
+	  MaskDisplay		  "image(imread('lbr.jpg'));\nport_label('input', 1, 'q');\nport_label('input', 2, '7_T_EE');\n\n\nport_label('output', 1, '0_J^T_EE');\n"
+	  MaskIconFrame		  on
+	  MaskIconOpaque	  on
+	  MaskIconRotate	  "none"
+	  MaskIconUnits		  "autoscale"
+	}
+	Block {
+	  BlockType		  "S-Function"
+	  Name			  "LWR Zero Jacobians EE"
+	  Ports			  [2, 8]
+	  Position		  [675, 242, 860, 433]
+	  FunctionName		  "lbrZeroJacobiansWithEE_sfun"
+	  MaskDisplay		  "image(imread('lbr.jpg'));\nport_label('input', 1, 'q');\nport_label('input', 2, '7_T_EE');\n\nport_label('output', 1, '0_J^T_1');\nport_label('output', 2, '0_J^T_2');\nport_label('output', 3, '0_J^T_3');\nport_label('output', 4, '0_J^T_4');\nport_label('output', 5, '0_J^T_5');\nport_label('output', 6, '0_J^T_6');\nport_label('output', 7, '0_J^T_7');\nport_label('output', 8, '0_J^T_EE');\n"
+	  MaskIconFrame		  on
+	  MaskIconOpaque	  on
+	  MaskIconRotate	  "none"
+	  MaskIconUnits		  "autoscale"
+	}
+	Block {
+	  BlockType		  "S-Function"
+	  Name			  "LWR-Jacobians"
+	  Ports			  [1, 7]
+	  Position		  [40, 245, 225, 435]
+	  FunctionName		  "lbrZeroJacobians_sfun"
+	  MaskDisplay		  "image(imread('lbr.jpg'));\nport_label('input', 1, 'q');\n\n\n\nport_label('output', 1, '0_J^T_1');\nport_label('output', 2, '0_J^T_2');\nport_label('output', 3, '0_J^T_3');\nport_label('output', 4, '0_J^T_4');\nport_label('output', 5, '0_J^T_5');\nport_label('output', 6, '0_J^T_6');\nport_label('output', 7, '0_J^T_7');\n"
+	  MaskIconFrame		  on
+	  MaskIconOpaque	  on
+	  MaskIconRotate	  "none"
+	  MaskIconUnits		  "autoscale"
+	}
+	Block {
+	  BlockType		  "S-Function"
+	  Name			  "LWR-Transformations"
+	  Ports			  [2, 8]
+	  Position		  [40, 27, 225, 218]
+	  FunctionName		  "lbrTransformations_sfun"
+	  MaskDisplay		  "image(imread('lbr.jpg'));\nport_label('input', 1, 'q');\nport_label('input', 2, '7_T_EE');\n\n\nport_label('output', 1, '0_T_1');\nport_label('output', 2, '0_T_2');\nport_label('output', 3, '0_T_3');\nport_label('output', 4, '0_T_4');\nport_label('output', 5, '0_T_5');\nport_label('output', 6, '0_T_6');\nport_label('output', 7, '0_T_7');\nport_label('output', 8, '0_T_EE');"
+	  MaskIconFrame		  on
+	  MaskIconOpaque	  on
+	  MaskIconRotate	  "none"
+	  MaskIconUnits		  "autoscale"
+	}
+	Block {
+	  BlockType		  "S-Function"
+	  Name			  "LWR-time differentiated Jacobians"
+	  Ports			  [2, 7]
+	  Position		  [40, 465, 225, 655]
+	  FunctionName		  "lbrJacobiansDot_sfun"
+	  MaskDisplay		  "image(imread('lbr.jpg'));\nport_label('input', 1, 'q');\nport_label('input', 2, 'qd');\n\n\nport_label('output', 1, '0_Jd^T_1');\nport_label('output', 2, '0_Jd^T_2');\nport_label('output', 3, '0_Jd^T_3');\nport_label('output', 4, '0_Jd^T_4');\nport_label('output', 5, '0_Jd^T_5');\nport_label('output', 6, '0_Jd^T_6');\nport_label('output', 7, '0_Jd^T_7');\n"
+	  MaskIconFrame		  on
+	  MaskIconOpaque	  on
+	  MaskIconRotate	  "none"
+	  MaskIconUnits		  "autoscale"
+	}
+	Annotation {
+	  Position		  [223, 117]
+	}
+	Annotation {
+	  Name			  "Calculates the Transformationmatrices for the LWR\n\nwith\nOUTPUTS\n   0\\_T\\_X: Transformation from base to X\nINPUTS\n   q: Joint angles\n   TCP\\_T\\_EE Transformation from TCP to EE"
+	  Position		  [257, 107]
+	  HorizontalAlignment	  "left"
+	  TeXMode		  "on"
+	  FontSize		  15
+	}
+	Annotation {
+	  Position		  [312, 348]
+	}
+	Annotation {
+	  Name			  "Calculates the Jacobians for the LWR\n\nwith\nOUTPUTS\n   0\\_J\\^T\\_X: Transposed jacobian matrices in base frame\nINPUTS\n   q: Joint angles"
+	  Position		  [252, 317]
+	  HorizontalAlignment	  "left"
+	  TeXMode		  "on"
+	  FontSize		  15
+	}
+	Annotation {
+	  Position		  [305, 520]
+	}
+	Annotation {
+	  Name			  "Calculates the time differentiated Jacobians for the LWR\n\nwith\nOUTPUTS\n   0_Jd^T_X: Transposed jtime differentiated \n                     jacobian matrices in base frame\nINPUTS\n   q: Joint angles\n   qd: Joint velocities"
+	  Position		  [257, 562]
+	  HorizontalAlignment	  "left"
+	  TeXMode		  "on"
+	  FontSize		  15
+	}
+	Annotation {
+	  Position		  [1018, 526]
+	}
+	Annotation {
+	  Name			  "Calculates the torque acting on the robot  from a \nforce winder acting on an element\n\ni_r_x: Position of the force winder in element coordinates\nF_x: Force Winder in element coordinates\ni_J_i: Body Jacobian of the element"
+	  Position		  [900, 546]
+	  HorizontalAlignment	  "left"
+	  FontSize		  14
+	}
+      }
+    }
+    Annotation {
+      Name		      "THE S_FUNCTIONS FOR REACTION FORCES AND DYNAMICS\nARE CALCULATED AND COMPILED WITH \nsrcNewtonEuler/NewtonEulerForwBackw"
+      Position		      [320, 294]
+      FontSize		      20
+    }
+  }
+}
+# Finite State Machines
+#
+#    Stateflow Version 6.7 (R2007b) dated Aug  7 2007, 16:20:55
+#
+#
+
+
+Stateflow {
+  machine {
+    id			    1
+    name		    "lwr_dynamics"
+    created		    "17-Feb-2012 12:31:40"
+    isLibrary		    1
+    firstTarget		    24
+    sfVersion		    67014000.000001
+  }
+  chart {
+    id			    2
+    name		    "Kinematics/Forces on ELements"
+    windowPosition	    [390.75 188.25 200.25 189.75]
+    viewLimits		    [0 156.75 0 153.75]
+    screen		    [1 1 1920 1080 1.25]
+    treeNode		    [0 3 0 0]
+    firstTransition	    5
+    firstJunction	    4
+    viewObj		    2
+    machine		    1
+    subviewS {
+    }
+    decomposition	    CLUSTER_CHART
+    type		    EML_CHART
+    firstData		    6
+    chartFileNumber	    1
+    disableImplicitCasting  1
+    eml {
+      name		      "calcTorque"
+    }
+  }
+  state {
+    id			    3
+    labelString		    "eML_blk_kernel()"
+    position		    [18 64.5 118 66]
+    fontSize		    12
+    chart		    2
+    treeNode		    [2 0 0 0]
+    superState		    SUBCHART
+    subviewer		    2
+    type		    FUNC_STATE
+    decomposition	    CLUSTER_STATE
+    eml {
+      isEML		      1
+      script		      "function tau = calcTorque(i_r_x, F_x, i_J_i)\n\n\ntau = i_J_i* [eye(3,3)                     zeros(3,3)\n              [0       -i_r_x(3) i_r_x(2)\n               i_r_x(3) 0       -i_r_x(1)\n              -i_r_x(2) i_r_x(1) 0       ] eye(3,3)] * F_x;"
+      editorLayout	      "100 M4x1[203 655 671 364]"
+    }
+  }
+  junction {
+    id			    4
+    position		    [23.5747 49.5747 7]
+    chart		    2
+    linkNode		    [2 0 0]
+    subviewer		    2
+    type		    CONNECTIVE_JUNCTION
+  }
+  transition {
+    id			    5
+    labelString		    "{eML_blk_kernel();}"
+    labelPosition	    [32.125 19.875 102.544 14.964]
+    fontSize		    12
+    src {
+      intersection	      [0 0 1 0 23.5747 14.625 0 0]
+    }
+    dst {
+      id		      4
+      intersection	      [7 0 -1 -1 23.5747 42.5747 0 0]
+    }
+    midPoint		    [23.5747 24.9468]
+    chart		    2
+    linkNode		    [2 0 0]
+    dataLimits		    [23.575 23.575 14.625 34.575]
+    subviewer		    2
+    drawStyle		    SMART
+    executionOrder	    1
+  }
+  data {
+    id			    6
+    name		    "i_r_x"
+    linkNode		    [2 0 7]
+    scope		    INPUT_DATA
+    machine		    1
+    props {
+      array {
+	size			"3"
+      }
+      type {
+	method			SF_INHERITED_TYPE
+      }
+      complexity	      SF_COMPLEX_INHERITED
+    }
+    dataType		    "inherited"
+    fixptType {
+      slope		      1
+      baseType		      SF_INT16_TYPE
+    }
+    complexity		    SF_COMPLEX_INHERITED
+  }
+  data {
+    id			    7
+    name		    "tau"
+    linkNode		    [2 6 8]
+    scope		    OUTPUT_DATA
+    machine		    1
+    props {
+      array {
+	size			"7"
+      }
+      type {
+	method			SF_INHERITED_TYPE
+      }
+      complexity	      SF_COMPLEX_INHERITED
+      frame		      SF_FRAME_NO
+    }
+    dataType		    "inherited"
+    fixptType {
+      slope		      1
+      baseType		      SF_INT16_TYPE
+    }
+    complexity		    SF_COMPLEX_INHERITED
+  }
+  data {
+    id			    8
+    name		    "F_x"
+    linkNode		    [2 7 9]
+    scope		    INPUT_DATA
+    machine		    1
+    props {
+      array {
+	size			"6"
+      }
+      type {
+	method			SF_INHERITED_TYPE
+	primitive		SF_DOUBLE_TYPE
+	isSigned		1
+	wordLength		"16"
+      }
+      complexity	      SF_COMPLEX_INHERITED
+      frame		      SF_FRAME_INHERITED
+    }
+    dataType		    "inherited"
+    complexity		    SF_COMPLEX_INHERITED
+  }
+  data {
+    id			    9
+    name		    "i_J_i"
+    linkNode		    [2 8 0]
+    scope		    INPUT_DATA
+    machine		    1
+    props {
+      array {
+	size			"[7 6]"
+      }
+      type {
+	method			SF_INHERITED_TYPE
+	primitive		SF_DOUBLE_TYPE
+	isSigned		1
+	wordLength		"16"
+      }
+      complexity	      SF_COMPLEX_INHERITED
+      frame		      SF_FRAME_INHERITED
+    }
+    dataType		    "inherited"
+    complexity		    SF_COMPLEX_INHERITED
+  }
+  instance {
+    id			    10
+    name		    "Kinematics/Forces on ELements"
+    machine		    1
+    chart		    2
+  }
+  chart {
+    id			    11
+    name		    "Dynamics/Additional Dynamic elements/calculate braking and endstop torques"
+    windowPosition	    [420.75 158.25 200.25 189.75]
+    viewLimits		    [0 156.75 0 153.75]
+    screen		    [1 1 1920 1200 1.111111111111111]
+    treeNode		    [0 12 0 0]
+    firstTransition	    14
+    firstJunction	    13
+    viewObj		    11
+    machine		    1
+    toolbarMode		    LIBRARY_TOOLBAR
+    decomposition	    CLUSTER_CHART
+    type		    EML_CHART
+    firstData		    15
+    chartFileNumber	    2
+    disableImplicitCasting  1
+    eml {
+      name		      "calcBrakesAndEndStops"
+    }
+  }
+  state {
+    id			    12
+    labelString		    "eML_blk_kernel()"
+    position		    [18 64.5 118 66]
+    fontSize		    12
+    chart		    11
+    treeNode		    [11 0 0 0]
+    superState		    SUBCHART
+    subviewer		    11
+    type		    FUNC_STATE
+    decomposition	    CLUSTER_STATE
+    eml {
+      isEML		      1
+      script		      "function tau_B = calcBrakesAndEndStops(q, dqdt, brakes, minJoint, maxJoint, tau, Minv)\n    \n    I = eye(7,7);\n    brakedamping=2*ones(7,1);\n    null = zeros(7,1);\n    j = 0;  % Nr of active Breaks\n    chooseR = zeros(7,7);  % Choose Matrix\n    qEnd = zeros(7,1);\n    activeEndStops = zeros(7,1);\n    MinvTau = Minv*tau;\n    pole1 = 40;\n    pole2 = 40;\n    \n    \n    % CALCULATE ENDSTOP TORQUES\n    %#######################################\n    for i=1:7\n        if (q(i) > maxJoint(i) && brakes(i) ~= 1)\n            tau_test = Minv*brake(I(i,:), I(:,i), dqdt, tau, Minv, pole1*pole2*I(:,i), (pole1+pole2)*I(:,i), q, I(:,i)*maxJoint(i));\n            if (MinvTau(i) > tau_test(i)) \n                qEnd(i) = maxJoint(i);\n                activeEndStops(i) = 1;\n                j = j+1;\n                chooseR(j,:) = I(i,:);\n            end\n        end\n        if (q(i) < minJoint(i) && brakes(i) ~= 1)\n           tau_test = Minv*brake(I(i,:), I(:,i), dqdt, tau, Minv, pole1*pole2*I(:,i), (pole1+pole2)*I(:,i), q, I(:,i)*maxJoint(i));\n           if (MinvTau(i) < tau_test(i)) \n                qEnd(i) = minJoint(i);\n                activeEndStops(i) = 1;\n                j = j+1;\n                chooseR(j,:) = I(i,:);\n           end\n        end\n    end  \n\n    \n    K = activeEndStops*pole1*pole2;\n    D = activeEndStops*(pole1+pole2);\n    \n    % How much Joints are in End Stop\n    switch j\n        case 1\n            tau_end = brake(chooseR(1,:),   activeEndStops, dqdt, tau, Minv, K, D, q, qEnd);\n        case 2\n            tau_end = brake(chooseR(1:2,:), activeEndStops, dqdt, tau, Minv, K, D, q, qEnd);\n        case 3\n            tau_end = brake(chooseR(1:3,:), activeEndStops, dqdt, tau, Minv, K, D, q, qEnd);\n        case 4\n            tau_end = brake(chooseR(1:4,:), activeEndStops, dqdt, tau, Minv, K, D, q, qEnd);\n        case 5\n            tau_end = brake(chooseR(1:5,:), activeEndStops, dqdt, tau, Minv, K, D, q, qEnd);\n        case 6\n            tau_end = brake(chooseR(1:6,:), activeEndStops, dqdt, tau, Minv, K, D, q, qEnd);\n        case 7\n            tau_end = brake(chooseR(1:7,:), activeEndStops, dqdt, tau, Minv, K, D, q, qEnd);\n        otherwise   \n           tau_end = zeros(7,1);\n    end\n    \n    tau_B = tau_end;\n    \n    \n    % CALCULATE BRAKING TORQUES\n    %#######################################\n    chooseR = zeros(7,7);\n    j = 0;\n    % Construct choosematrix\n    for i=1:7\n        if brakes(i) == 1\n            j = j+1;\n            chooseR(j,:) = I(i,:);\n        end\n    end\n    tau = tau+tau_B; %reaction forces of end stops should not interfere the brakes\n    \n        \n    % How much Joints are braked\n    switch j\n        case 1\n            tau_brake = brake(chooseR(1,:),   brakes, dqdt, tau, Minv, null, brakedamping, null, null);\n        case 2\n            tau_brake = brake(chooseR(1:2,:), brakes, dqdt, tau, Minv, null, brakedamping, null, null);\n        case 3\n            tau_brake = brake(chooseR(1:3,:), brakes, dqdt, tau, Minv, null, brakedamping, null, null);\n        case 4\n            tau_brake = brake(chooseR(1:4,:), brakes, dqdt, tau, Minv, null, brakedamping, null, null);\n        case 5\n            tau_brake = brake(chooseR(1:5,:), brakes, dqdt, tau, Minv, null, brakedamping, null, null);\n        case 6\n            tau_brake = brake(chooseR(1:6,:), brakes, dqdt, tau, Minv, null, brakedamping, null, null);\n        case 7\n            tau_brake = brake(chooseR(1:7,:), brakes, dqdt, tau, Minv, null, brakedamping, null, null);\n        otherwise   \n           tau_brake = zeros(7,1);\n    end\n    \n    tau_B = tau_B+tau_brake;\nend\n\nfunction tau = brake(choose, brakes, dqdt, tau, Minv, K, D, q, qdes)\n     %Phi _q denotes the derivative of the reaction forces matrix and is [7xr] matrix (r denotes the number of braked joints)\n    phi_q = choose*diag(brakes);\n    \n    multiplier = inv(phi_q*Minv*phi_q.');\n    baumgarteStabilisierung = choose*(D.*dqdt)+choose*(K.*(q-qdes));\n    tau = choose.'*(multiplier*(phi_q*Minv*(-tau))-baumgarteStabilisierung);\nend"
+      editorLayout	      "100 M4x1[512 375 1368 666]"
+    }
+  }
+  junction {
+    id			    13
+    position		    [23.5747 49.5747 7]
+    chart		    11
+    linkNode		    [11 0 0]
+    subviewer		    11
+    type		    CONNECTIVE_JUNCTION
+  }
+  transition {
+    id			    14
+    labelString		    "{eML_blk_kernel();}"
+    labelPosition	    [32.125 19.875 102.544 14.964]
+    fontSize		    12
+    src {
+      intersection	      [0 0 1 0 23.5747 14.625 0 0]
+    }
+    dst {
+      id		      13
+      intersection	      [7 0 -1 -1 23.5747 42.5747 0 0]
+    }
+    midPoint		    [23.5747 24.9468]
+    chart		    11
+    linkNode		    [11 0 0]
+    dataLimits		    [23.575 23.575 14.625 34.575]
+    subviewer		    11
+    drawStyle		    SMART
+    executionOrder	    1
+  }
+  data {
+    id			    15
+    name		    "q"
+    linkNode		    [11 0 16]
+    scope		    INPUT_DATA
+    machine		    1
+    props {
+      array {
+	size			"7"
+      }
+      type {
+	method			SF_INHERITED_TYPE
+	primitive		SF_DOUBLE_TYPE
+	isSigned		1
+	wordLength		"16"
+      }
+      complexity	      SF_COMPLEX_INHERITED
+      frame		      SF_FRAME_INHERITED
+    }
+    dataType		    "inherited"
+    complexity		    SF_COMPLEX_INHERITED
+  }
+  data {
+    id			    16
+    name		    "dqdt"
+    linkNode		    [11 15 17]
+    scope		    INPUT_DATA
+    machine		    1
+    props {
+      array {
+	size			"7"
+      }
+      type {
+	method			SF_INHERITED_TYPE
+	primitive		SF_DOUBLE_TYPE
+	isSigned		1
+	wordLength		"16"
+      }
+      complexity	      SF_COMPLEX_INHERITED
+      frame		      SF_FRAME_INHERITED
+    }
+    dataType		    "inherited"
+    complexity		    SF_COMPLEX_INHERITED
+  }
+  data {
+    id			    17
+    name		    "brakes"
+    linkNode		    [11 16 18]
+    scope		    INPUT_DATA
+    machine		    1
+    props {
+      array {
+	size			"7"
+      }
+      type {
+	method			SF_INHERITED_TYPE
+      }
+      complexity	      SF_COMPLEX_INHERITED
+    }
+    dataType		    "inherited"
+    fixptType {
+      slope		      1
+      baseType		      SF_INT16_TYPE
+    }
+    complexity		    SF_COMPLEX_INHERITED
+  }
+  data {
+    id			    18
+    name		    "minJoint"
+    linkNode		    [11 17 19]
+    scope		    INPUT_DATA
+    machine		    1
+    props {
+      array {
+	size			"7"
+      }
+      type {
+	method			SF_INHERITED_TYPE
+	primitive		SF_DOUBLE_TYPE
+	isSigned		1
+	wordLength		"16"
+      }
+      complexity	      SF_COMPLEX_INHERITED
+      frame		      SF_FRAME_INHERITED
+    }
+    dataType		    "inherited"
+    complexity		    SF_COMPLEX_INHERITED
+  }
+  data {
+    id			    19
+    name		    "maxJoint"
+    linkNode		    [11 18 20]
+    scope		    INPUT_DATA
+    machine		    1
+    props {
+      array {
+	size			"7"
+      }
+      type {
+	method			SF_INHERITED_TYPE
+	primitive		SF_DOUBLE_TYPE
+	isSigned		1
+	wordLength		"16"
+      }
+      complexity	      SF_COMPLEX_INHERITED
+      frame		      SF_FRAME_INHERITED
+    }
+    dataType		    "inherited"
+    complexity		    SF_COMPLEX_INHERITED
+  }
+  data {
+    id			    20
+    name		    "tau_B"
+    linkNode		    [11 19 21]
+    scope		    OUTPUT_DATA
+    machine		    1
+    props {
+      array {
+	size			"7"
+      }
+      type {
+	method			SF_INHERITED_TYPE
+      }
+      complexity	      SF_COMPLEX_INHERITED
+      frame		      SF_FRAME_NO
+    }
+    dataType		    "inherited"
+    fixptType {
+      slope		      1
+      baseType		      SF_INT16_TYPE
+    }
+    complexity		    SF_COMPLEX_INHERITED
+  }
+  data {
+    id			    21
+    name		    "tau"
+    linkNode		    [11 20 22]
+    scope		    INPUT_DATA
+    machine		    1
+    props {
+      array {
+	size			"7"
+      }
+      type {
+	method			SF_INHERITED_TYPE
+	primitive		SF_DOUBLE_TYPE
+	isSigned		1
+	wordLength		"16"
+      }
+      complexity	      SF_COMPLEX_INHERITED
+      frame		      SF_FRAME_INHERITED
+    }
+    dataType		    "inherited"
+    complexity		    SF_COMPLEX_INHERITED
+  }
+  data {
+    id			    22
+    name		    "Minv"
+    linkNode		    [11 21 0]
+    scope		    INPUT_DATA
+    machine		    1
+    props {
+      array {
+	size			"[7 7]"
+      }
+      type {
+	method			SF_INHERITED_TYPE
+	primitive		SF_DOUBLE_TYPE
+	isSigned		1
+	wordLength		"16"
+      }
+      complexity	      SF_COMPLEX_INHERITED
+      frame		      SF_FRAME_INHERITED
+    }
+    dataType		    "inherited"
+    complexity		    SF_COMPLEX_INHERITED
+  }
+  instance {
+    id			    23
+    name		    "Dynamics/Additional Dynamic elements/calculate braking and endstop torques"
+    machine		    1
+    chart		    11
+  }
+  target {
+    id			    24
+    name		    "sfun"
+    description		    "Default Simulink S-Function Target."
+    machine		    1
+    linkNode		    [1 0 0]
+  }
+}
