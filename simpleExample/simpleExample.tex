@@ -87,14 +87,44 @@ Power balance equation with flow $\dot{\theta}_d$:
 \end{align}
 Subtracting (\ref{eq:closedLoopTheta}) from (\ref{eq:closedLoopThetaD}):
 \begin{align}
-\dot{\tilde{q}}M\dot{\tilde{q}} + \dot{\tilde{\theta}}B\dot{\tilde{\theta}} + \underbrace{\dot{\tilde{\theta}}K_q\tilde{q}}_{ \stackrel{?}{=} \dot{S}} \underbrace{- \dot{\tilde{\theta}}\hat{g}(q) + \dot{\tilde{q}}g(q)}_{ \stackrel{?}{=} \dot{S}/0} = -\underbrace{\dot{\tilde{\theta}}D_q\dot{\tilde{q}}}_{ \stackrel{?}{=} P_D} \label{eq:closedLoop}
+\dot{\tilde{q}}M\ddot{\tilde{q}} + \dot{\tilde{\theta}}B\ddot{\tilde{\theta}} + \underbrace{\dot{\tilde{\theta}}K_q\tilde{q}}_{ \stackrel{?}{=} \dot{S}} \underbrace{- \dot{\tilde{\theta}}\hat{g}(q) + \dot{\tilde{q}}g(q)}_{ \stackrel{?}{=} \dot{S}/0} = -\underbrace{\dot{\tilde{\theta}}D_q\dot{\tilde{q}}}_{ \stackrel{?}{=} P_D} \label{eq:closedLoop}
 \end{align} 
 \subsection{Only regulation and Albu-schaeffer idea}
 Closed loop dynamics (\ref{eq:closedLoop}) will boil down to: 
 \begin{align}
-\dot{q}M\dot{q} + \dot{\theta}B\dot{\theta} + \dot{\theta}K_q\tilde{q} - \dot{\theta}\hat{g}(q) + \dot{q}g(q) = -\dot{\theta}D_q\dot{q}
+\dot{q}M\ddot{q} + \dot{\theta}B\ddot{\theta} + \dot{\theta}K_q\tilde{q} - \dot{\theta}\hat{g}(q) + \dot{q}g(q) = -\dot{\theta}D_q\dot{q}
 \end{align}
-
+According to \cite{albu2004passivity} the storage function for the closed loop system is: 
+\begin{align}
+S_{tot} = \underbrace{\frac{1}{2}\dot{\theta}B\dot{\theta} + \frac{1}{2}(\theta-q)K(\theta-q) + \underbrace{\underbrace{\frac{1}{2}\tilde{\bar{q}}K_q\tilde{\bar{q}} - V_g(\bar{q})}_{-V_l}  \underbrace{-\frac{1}{2}l(\bar{q}(\theta))K^{-1}l(\bar{q}(\theta))}_{S_l}}_{-V_{\bar{l}}}}_{S_\theta} + \frac{1}{2}\dot{q}M\dot{q} + V_g(q) \label{eq:StotReg}
+\end{align}
+where: 
+\begin{align}
+l(\bar{q}(\theta)) &= -K_q\tilde{\bar{q}}(\theta) + g(\bar{q}(\theta)) \\
+\tilde{\bar{q}}(\theta) &= \bar{q}(\theta) - q_d \\
+\bar{q}(\theta) &= h^{-1}(\theta)
+\end{align}
+and $h^{-1}(\theta)$ is corresponding $q$ to this $\theta$ in static case. Thus, for this static $q$ we have: 
+\begin{align}
+l(\bar{q}(\theta)) = K(\theta-\bar{q}(\theta))
+\end{align}
+and as a result $S_l$ in equation (\ref{eq:StotReg}) will be: 
+\begin{align}
+S_l = -\frac{1}{2}(\theta-\bar{q}(\theta))K(\theta-\bar{q}(\theta))
+\end{align}
+why should we have this storage function in $S_{tot}$? 
+Before proceeding, we have: 
+\begin{align}
+\frac{\partial V_l}{\partial \bar{q}} = -K_q\tilde{\bar{q}} + g(\bar{q}) = l(\bar{q})
+\end{align}
+which makes sense because $\dot{q}l(q)$ is the power going out of controller, and thus for the overall storage function the notion of $-V_l$ is used. 
+Now, we also have: 
+\begin{align}
+\frac{\partial V_{\bar{l}}}{\partial \bar{\theta}} &= -\frac{\partial \bar{q}}{\partial \theta}K_q\tilde{\bar{q}} + \frac{\partial \bar{q}}{\partial \theta}g(\bar{q}) + (1-\frac{\partial \bar{q}}{\partial \theta})\underbrace{K(\theta-\bar{q}(\theta))}_{l(\bar{q})} \nonumber \\
+&= \frac{\partial \bar{q}}{\partial \theta}\underbrace{(-K_q\tilde{\bar{q}}+g(\bar{q}))}_{l(\bar{q})} + l(\bar{q}) -  \frac{\partial \bar{q}}{\partial \theta}l(\bar{q}) \nonumber \\
+&= l(\bar{q})
+\end{align}
+\bibliographystyle{abbrv}
 \bibliography{mybib}{}
 %\bibliographystyle{plain}
 \end{document}
